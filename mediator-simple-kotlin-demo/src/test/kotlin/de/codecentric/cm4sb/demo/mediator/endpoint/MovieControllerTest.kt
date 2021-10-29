@@ -1,7 +1,6 @@
-package com.example.chaoskotlin.endpoint
+package de.codecentric.cm4sb.demo.mediator.endpoint
 
 import de.codecentric.cm4sb.demo.mediator.domain.Movie
-import de.codecentric.cm4sb.demo.mediator.endpoint.MovieController
 import de.codecentric.cm4sb.demo.mediator.service.MovieService
 import org.junit.jupiter.api.Test
 import org.mockito.Mockito

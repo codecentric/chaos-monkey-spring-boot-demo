@@ -1,0 +1,9 @@
+POST http://localhost:8080/actuator/chaosmonkey/assaults
+Content-Type: application/json
+
+{
+  "killApplicationCronExpression": "0 */2 * * * *",
+  "killApplicationActive": "true"
+}
+
+###

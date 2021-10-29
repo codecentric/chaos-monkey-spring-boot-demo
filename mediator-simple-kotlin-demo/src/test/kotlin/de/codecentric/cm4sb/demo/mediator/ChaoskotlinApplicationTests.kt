@@ -1,4 +1,4 @@
-package com.example.chaoskotlin
+package de.codecentric.cm4sb.demo.mediator
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest

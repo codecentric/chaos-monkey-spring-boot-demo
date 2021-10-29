@@ -1,8 +1,7 @@
-package com.example.chaoskotlin.service
+package de.codecentric.cm4sb.demo.mediator.service
 
 import de.codecentric.cm4sb.demo.mediator.domain.Movie
 import de.codecentric.cm4sb.demo.mediator.repository.MovieRepository
-import de.codecentric.cm4sb.demo.mediator.service.MovieService
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.mockito.Mockito.`when`
