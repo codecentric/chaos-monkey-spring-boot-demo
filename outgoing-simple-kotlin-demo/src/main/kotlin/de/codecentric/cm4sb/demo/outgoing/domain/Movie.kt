@@ -9,4 +9,5 @@ data class Movie(
         val title: String,
         val duration: String,
         @Id @GeneratedValue
-        var id: Long = -1,)
+        var id: Long = -1
+)

@@ -8,7 +8,7 @@ import org.springframework.boot.runApplication
 import org.springframework.context.annotation.Bean
 
 @SpringBootApplication
-class ChaoskotlinApplication{
+class OutgoingWebClientDemoApplication{
 
     @Bean
     fun demo(repository: MovieRepository): CommandLineRunner {
@@ -26,7 +26,7 @@ class ChaoskotlinApplication{
 }
 
 fun main(args: Array<String>) {
-    runApplication<ChaoskotlinApplication>(*args)
+    runApplication<OutgoingWebClientDemoApplication>(*args)
 }
 
 

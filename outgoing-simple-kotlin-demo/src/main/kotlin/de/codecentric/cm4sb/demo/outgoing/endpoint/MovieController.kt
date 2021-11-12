@@ -1,5 +1,6 @@
 package de.codecentric.cm4sb.demo.outgoing.endpoint
 
+import de.codecentric.cm4sb.demo.outgoing.domain.Movie
 import de.codecentric.cm4sb.demo.outgoing.domain.MovieHttpBin
 import de.codecentric.cm4sb.demo.outgoing.service.HttpBinService
 import de.codecentric.cm4sb.demo.outgoing.service.MovieService
@@ -15,11 +16,7 @@ class MovieController(val httpBinService: HttpBinService, val movieService: Movi
 
     @GetMapping("/movies", produces = [MediaType.APPLICATION_JSON_VALUE])
     fun getRecommendation(@RequestParam(required = false) title: String?): MovieHttpBin {
-        val movie = if (title == null) {
-            movieService.getRecommendedMovie()
-        } else {
-            movieService.getMovieByTitle(title)
-        }
+        val movie = getRandomMovieOrByTitle(title)
 
         val httpBin = httpBinService.get()
         val movieSuccessor = httpBinService.getMovieSuccessor(movie)
@@ -28,16 +25,21 @@ class MovieController(val httpBinService: HttpBinService, val movieService: Movi
 
     @GetMapping("/movies/asynch", produces = [MediaType.APPLICATION_JSON_VALUE])
     fun getRecommendationAsync(@RequestParam(required = false) title: String?): Mono<MovieHttpBin> {
-        val movie = if (title == null) {
-            movieService.getRecommendedMovie()
-        } else {
-            movieService.getMovieByTitle(title)
-        }
+        val movie = getRandomMovieOrByTitle(title)
 
         val httpBin = httpBinService.getAsync()
         val movieSuccessor = httpBinService.getMovieSuccessorAsync(movie)
         return Mono
                 .zip(httpBin, movieSuccessor)
                 .map { MovieHttpBin(movie, it.t1, it.t2) }
+    }
+
+    private fun getRandomMovieOrByTitle(title: String?): Movie {
+        val movie = if (title == null) {
+            movieService.getRecommendedMovie()
+        } else {
+            movieService.getMovieByTitle(title)
+        }
+        return movie
     }
 }

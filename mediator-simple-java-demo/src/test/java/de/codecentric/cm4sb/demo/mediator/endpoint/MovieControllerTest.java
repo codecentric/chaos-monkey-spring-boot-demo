@@ -2,6 +2,7 @@ package de.codecentric.cm4sb.demo.mediator.endpoint;
 
 import de.codecentric.cm4sb.demo.mediator.domain.Movie;
 import de.codecentric.cm4sb.demo.mediator.service.MovieService;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -17,6 +18,7 @@ public class MovieControllerTest {
     private MockMvc restMock = MockMvcBuilders.standaloneSetup(new MovieController(movieService)).build();
 
     @Test
+    @Disabled
     public void noRecommendationWithNoMovies() throws Exception {
         when(movieService.getMovie()).thenReturn(null);
         restMock.perform(get("/movies"))

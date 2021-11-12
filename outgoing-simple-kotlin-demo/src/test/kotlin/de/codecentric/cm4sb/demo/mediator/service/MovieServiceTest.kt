@@ -1,7 +1,7 @@
 package de.codecentric.cm4sb.demo.mediator.service
 
 import de.codecentric.cm4sb.demo.outgoing.domain.Movie
-import de.codecentric.cm4sb.demo.mediator.repository.configuration.MovieRepository
+import de.codecentric.cm4sb.demo.outgoing.repository.MovieRepository
 import de.codecentric.cm4sb.demo.outgoing.service.MovieService
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
