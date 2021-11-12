@@ -1,4 +1,4 @@
-package de.codecentric.cm4sb.demo.mediator.endpoint
+package de.codecentric.cm4sb.demo.outgoing.endpoint
 
 import de.codecentric.cm4sb.demo.outgoing.domain.Movie
 import de.codecentric.cm4sb.demo.outgoing.service.MovieService
