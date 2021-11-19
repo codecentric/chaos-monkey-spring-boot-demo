@@ -8,7 +8,7 @@ import org.springframework.boot.runApplication
 import org.springframework.context.annotation.Bean
 
 @SpringBootApplication
-class OutgoingWebClientDemoApplication{
+class OutgoingWebClientKotlinDemoApplication{
 
     @Bean
     fun demo(repository: MovieRepository): CommandLineRunner {
@@ -26,7 +26,7 @@ class OutgoingWebClientDemoApplication{
 }
 
 fun main(args: Array<String>) {
-    runApplication<OutgoingWebClientDemoApplication>(*args)
+    runApplication<OutgoingWebClientKotlinDemoApplication>(*args)
 }
 
 
