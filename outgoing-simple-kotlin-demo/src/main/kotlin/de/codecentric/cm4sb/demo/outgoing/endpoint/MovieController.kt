@@ -11,12 +11,13 @@ import org.springframework.web.bind.annotation.RestController
 
 
 @RestController
-class MovieController(val movieSuccessorService: MovieSuccessorService, val movieService: MovieService) {
+class MovieController(val movieSuccessorService: MovieSuccessorService,
+                      val movieService: MovieService) {
 
     @GetMapping("/movies", produces = [MediaType.APPLICATION_JSON_VALUE])
     fun getRecommendation(@RequestParam(required = false) title: String?): MovieWithSuccessor {
         val movie = getRandomMovieOrByTitle(title)
-
+        println("Recommend movie: $movie")
         val movieSuccessor = movieSuccessorService.getMovieSuccessor(movie)
         return MovieWithSuccessor(movie, movieSuccessor)
     }
