@@ -18,14 +18,16 @@ class MovieSuccessorService(val client: WebClient) {
     val mapper = ObjectMapper()
 
     fun getMovieSuccessor(movie: Movie): Movie? {
-        return runBlocking {
-            withTimeout(2000) {
-                getMovieSuccessorSuspending(movie)
-            }
-        }
+        return getMovieSuccessrInternal(movie)
+        // Coroutines
+        //        return runBlocking {
+        //            withTimeout(2000) {
+        //                getMovieSuccessrInternal(movie)
+        //            }
+        //        }
     }
 
-    suspend fun getMovieSuccessorSuspending(movie: Movie): Movie {
+    private fun getMovieSuccessrInternal(movie: Movie): Movie? {
         val successorMovie = movie.copy(
                 id = movie.id + 1337,
                 title = movie.title + " 2",
@@ -38,6 +40,7 @@ class MovieSuccessorService(val client: WebClient) {
                 .bodyToMono<JsonNode>()
                 .map { it.path("json") }
                 .map { mapper.treeToValue(it, Movie::class.java) }
-                .awaitSingle()
+                .block()
+        //      .awaitSingle()
     }
 }

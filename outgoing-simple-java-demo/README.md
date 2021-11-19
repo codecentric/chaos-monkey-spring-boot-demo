@@ -57,5 +57,16 @@ Runs with following chaos monkey configuration (see `application.properties` or 
 # Parallel requests
 Run 20 requests parallel to a total of 200 requests:
 
-`xargs -I % -P 20 curl "http://localhost:8080/movies" \
-< <(printf '%s\n' {1..200})`
+```bash
+xargs -I % -P 20 curl "http://localhost:8080/movies" \
+< <(printf '%s\n' {1..400})
+```
+
+With time out of 2 seconds
+```bash
+xargs -I % -P 20 curl --max-time 2 "http://localhost:8080/movies" \
+< <(printf '%s\n' {1..400})
+```
+
+Single request with time out of 2 seconds  
+`curl --max-time 2 "http://localhost:8080/movies"`
