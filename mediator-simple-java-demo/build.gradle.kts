@@ -17,8 +17,7 @@ dependencies {
 	implementation(libs.spring.boot.web)
 	implementation(libs.spring.boot.jpa)
 	implementation(libs.spring.boot.actuator)
-	implementation(libs.resilience4j)
-	implementation(libs.chaosMonkey)
+	
 	runtimeOnly(libs.h2)
 	testImplementation(libs.spring.boot.test)
 }
