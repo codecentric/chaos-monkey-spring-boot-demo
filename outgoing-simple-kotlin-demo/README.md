@@ -64,3 +64,10 @@ On port 8081:
 
 `xargs -I % -P 20 curl "http://localhost:8081/movies" \
 < <(printf '%s\n' {1..10000})`
+
+With max time of 2 seconds:
+`xargs -I % -P 20 curl --max-time 2 "http://localhost:8080/movies" \
+< <(printf '%s\n' {1..10000})`
+
+With max time of 2 seconds (single request):
+`curl --max-time 2 "http://localhost:8080/movies"`
