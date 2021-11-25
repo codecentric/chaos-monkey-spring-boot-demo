@@ -1,0 +1,27 @@
+spring:
+  profiles:
+    active: chaos-monkey
+chaos:
+  monkey:
+    enabled: false
+    watcher:
+      web-client: true
+    assaults:
+      level: 1
+      latency-active: true
+      latency-range-start: 1500
+      latency-range-end: 2000
+
+management:
+  endpoint:
+    chaosmonkey:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+server:
+  jetty:
+    threads:
+      max: 5
