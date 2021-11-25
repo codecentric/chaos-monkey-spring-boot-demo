@@ -10,7 +10,7 @@ This demo project shows how latency is injected in outgoing web requests by assa
 The service which is called is [https://httpbin.org/](https://httpbin.org/), which is a simple echo service.
 
 #### Details
-Runs with following chaos monkey configuration (see `application.properties` or postman collection request "Actuator CM"):
+Runs with following chaos monkey configuration (see `application.yml` or postman collection request "Actuator CM"):
 
 ````json
 {
@@ -55,7 +55,12 @@ Runs with following chaos monkey configuration (see `application.properties` or 
 ````
 
 # Parallel requests
-Run 20 requests parallel to a total of 200 requests:
+Run 20 requests parallel to a total of 10'000 requests:
 
 `xargs -I % -P 20 curl "http://localhost:8080/movies" \
-< <(printf '%s\n' {1..200})`
+< <(printf '%s\n' {1..10000})`
+
+On port 8081:
+
+`xargs -I % -P 20 curl "http://localhost:8081/movies" \
+< <(printf '%s\n' {1..10000})`
